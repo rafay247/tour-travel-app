@@ -9,19 +9,24 @@ import tourImg07 from "../images/tour-img07.jpg";
 const tours = [
   {
     id: "01",
+    address: 'somewhere',
     title: "Westminister Bridge",
     city: "London",
     distance: 300,
     price: 99,
     maxGroupSize: 10,
     desc: "this is the description",
-    reviews: [],
+    reviews: [{
+        name: "jhon doe",
+        rating: 4.6,
+      }],
     avgRating: 4.5,
     photo: tourImg01,
     featured: true,
   },
   {
     id: "02",
+    address: 'somewhere',
     title: "Bali, Indonesia",
     city: "Indonesia",
     distance: 400,
@@ -35,6 +40,7 @@ const tours = [
   },
   {
     id: "03",
+    address: 'somewhere',
     title: "Snowy Mountains, Thailand",
     city: "Thailand",
     distance: 500,
@@ -48,6 +54,7 @@ const tours = [
   },
   {
     id: "04",
+    address: 'somewhere',
     title: "Beautiful Sunrise, Thailand",
     city: "Thailand",
     distance: 500,
@@ -66,6 +73,7 @@ const tours = [
   },
   {
     id: "05",
+    address: 'somewhere',
     title: "Nusa Pendia Bali, Indonesia",
     city: "Indonesia",
     distance: 500,
@@ -84,6 +92,7 @@ const tours = [
   },
   {
     id: "06",
+    address: 'somewhere',
     title: "Cherry Blossoms Spring",
     city: "Japan",
     distance: 500,
@@ -106,6 +115,7 @@ const tours = [
   },
   {
     id: "07",
+    address: 'somewhere',
     title: "Holmen Lofoten",
     city: "France",
     distance: 500,
@@ -124,6 +134,7 @@ const tours = [
   },
   {
     id: "08",
+    address: 'somewhere',
     title: "Snowy Mountains, Thailand",
     city: "Thailand",
     distance: 500,
