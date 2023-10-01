@@ -17,9 +17,9 @@ const tours = [
     maxGroupSize: 10,
     desc: "this is the description",
     reviews: [{
-        name: "jhon doe",
-        rating: 4.6,
-      }],
+      name: "jhon doe",
+      rating: 4.6,
+    }],
     avgRating: 4.5,
     photo: tourImg01,
     featured: true,
@@ -33,7 +33,12 @@ const tours = [
     price: 99,
     maxGroupSize: 8,
     desc: "this is the description",
-    reviews: [],
+    reviews: [
+      [{
+        name: "jhon doe",
+        rating: 4.6,
+      }],
+    ],
     avgRating: 4.5,
     photo: tourImg02,
     featured: true,
