@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react'
+import React, { useState, useRef, useEffect, useContext } from 'react'
 import '../styles/tour-details.css'
 import { Container, Row, Col, Form, ListGroup } from 'reactstrap'
 import { useParams } from 'react-router-dom'
@@ -7,12 +7,14 @@ import avatar from '../assets/images/avatar.jpg'
 import Booking from '../components/Booking/Booking'
 import useFetch from '../hooks/useFetch'
 import BASE_URL from '../utils/config'
+import { AuthContextt } from '../context/AuthContext'
 
 const TourDetails = () => {
 
   const { id } = useParams()
   const reviewMsgRef = useRef('')
   const [tourRating, setTourRating] = useState(null)
+  const { user } = useContext(AuthContextt)
 
   const { data: tour } = useFetch(`${BASE_URL}/tour/:${id}`)
 
@@ -23,9 +25,36 @@ const TourDetails = () => {
   //fromate date 
   const option = { day: 'numeric', month: 'long', year: 'numeric' }
 
-  const submitHandler = e => {
+  const submitHandler = async e => {
     e.preventDefault()
     const reviewText = reviewMsgRef.current.value
+    if (!user || user === undefined || user === null) {
+      alert('please sign in')
+    }
+    const reviewObj = {
+      username: user?.username,
+      reviewText,
+      rating: tourRating
+    }
+
+    try {
+      const res = await fetch(`${BASE_URL}/review/${id}`, {
+        method: 'post',
+        headers: {
+          'content-type': 'application/json'
+        },
+        credentials: 'include',
+        body: JSON.stringify(reviewObj)
+      })
+      const result = await res.json()
+      if (!res.ok) return alert(result.message)
+      alert(result.message)
+
+    } catch (error) {
+      alert(error.message)
+    }
+
+
   }
 
   useEffect(() => {
@@ -90,20 +119,20 @@ const TourDetails = () => {
                   </Form>
                   <ListGroup className='user__reviews'>
                     {
-                      reviews?.map(reviews => (
+                      reviews?.map(review => (
                         <div className='review__item'>
                           <img src={avatar} alt="" />
                           <div className="w-100">
                             <div className='d-flex align-items-center justify-content-between'>
                               <div>
-                                <h5>Rafay</h5>
-                                <p>{new Date('01-18-2023').toLocaleDateString('en-Us', option)}</p>
+                                <h5>{review.username}</h5>
+                                <p>{new Date(review.createAt).toLocaleDateString('en-Us', option)}</p>
                               </div>
                               <span className='d-flex align-items-center'>
-                                5<i className='ri-star-s-fill'></i>
+                                {review.rating}<i className='ri-star-s-fill'></i>
                               </span>
                             </div>
-                            <h6>Amazing tour</h6>
+                            <h6>{review.reviewText}</h6>
                           </div>
                         </div>
                       ))
