@@ -1,31 +1,55 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import './booking.css'
 import { Form, FormGroup, ListGroup, ListGroupItem, Button } from 'reactstrap'
 import { useNavigate } from 'react-router-dom'
+import { AuthContextt } from '../../context/AuthContext'
+import BASE_URL from '../../utils/config'
 
 const Booking = ({ tour, avgRating }) => {
 
-    const { reviews, price } = tour
+    const { reviews, price, title } = tour
 
     const navigate = useNavigate()
+    const { user } = useContext(AuthContextt)
 
-    const [credentials, setCredentials] = useState({
-        userId: '01',
-        userEmail: 'example@gmai.com',
+    const [booking, setBooking] = useState({
+        userId: user && user_id,
+        userEmail: user && user.email,
+        tourName: title,
         fullname: '',
         phone: '',
         guestSize: 1,
         booAt: ''
     })
     const handleChange = e => {
-        setCredentials(prev => ({ ...prev, [e.target.id]: e.target.value }))
+        setBooking(prev => ({ ...prev, [e.target.id]: e.target.value }))
     }
     const serviceFee = 10
-    const totalAmount = Number(price) * Number(credentials.guestSize) + Number(serviceFee)
+    const totalAmount = Number(price) * Number(booking.guestSize) + Number(serviceFee)
 
-    const handleClick = e => {
+    const handleClick = async e => {
         e.preventDefault()
-        navigate('/thank-you')
+
+        try {
+            if (!user || user === undefined || user === null) {
+                alert('please sign in')
+            }
+            const res = await fetch(`${BASE_URL}/booking`, {
+                method: 'post',
+                headers: {
+                    'content-type': 'application/json'
+                },
+                credentials: 'include',
+                body: JSON.stringify(booking)
+            })
+            const result = await res.json()
+            if (!res.ok) return alert(result.message)
+            navigate('/thank-you')
+            alert(result.message)
+
+        } catch (error) {
+
+        }
     }
 
     return (
