@@ -74,10 +74,21 @@
         justify-content: center;
         z-index: 9999;
     }
-    .show_menu{
+
+    .show_menu {
         display: block;
     }
-    .mobile__menu{
+
+    .mobile__menu {
         display: block;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .logo img {
+        width: 45%;
+    }
+    .menu {
+        width: calc(100% 50%);
     }
 }
