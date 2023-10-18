@@ -1,7 +1,7 @@
 import React, { useRef } from 'react'
 import './search-bar.css'
 import { Col, Form, FormGroup } from "reactstrap";
-import { BASE_URL } from '../utils/config'
+import BASE_URL from '../utils/config'
 import { useNavigate } from 'react-router-dom';
 
 const SearchBar = () => {
@@ -21,9 +21,8 @@ const SearchBar = () => {
         const res = await fetch(`${BASE_URL}/tour/search/getTourBYSearch?city=${location}&distance=${distance}&maxGroupSize=${maxGroupSize}`)
         if (!res.ok) alert('something went wrong')
 
-        const result = await res.json(
-            navigate(`/tours/search?city=${location}&distance=${distance}&maxGroupSize=${maxGroupSize}`, { state: result.data })
-        )
+        const result = await res.json()
+        navigate(`/tours/search?city=${location}&distance=${distance}&maxGroupSize=${maxGroupSize}`, { state: result.data })
     }
 
     return (

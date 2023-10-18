@@ -3,7 +3,7 @@ import CommonSection from './../shared/CommonSection'
 import { Col, Container, Row } from 'reactstrap'
 import TourCard from '../shared/TourCard'
 import { useLocation } from 'react-router-dom'
-import NewsLetter from './../shared/Newsletter '
+import NewsLetter from './../shared/Newsletter'
 
 const SearchResultList = () => {
 

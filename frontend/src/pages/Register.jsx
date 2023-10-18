@@ -8,7 +8,7 @@ import registerImg from '../assets/images/register.png'
 import userIcon from '../assets/images/user.png'
 
 import { AuthContextt } from '../context/AuthContext'
-import { BASE_URL } from '../utils/config'
+import BASE_URL from '../utils/config'
 
 const Register = () => {
 

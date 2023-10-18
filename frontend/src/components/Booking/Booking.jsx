@@ -13,7 +13,7 @@ const Booking = ({ tour, avgRating }) => {
     const { user } = useContext(AuthContextt)
 
     const [booking, setBooking] = useState({
-        userId: user && user_id,
+        userId: user && user.id,
         userEmail: user && user.email,
         tourName: title,
         fullname: '',

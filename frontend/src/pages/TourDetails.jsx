@@ -16,7 +16,7 @@ const TourDetails = () => {
   const [tourRating, setTourRating] = useState(null)
   const { user } = useContext(AuthContextt)
 
-  const { data: tour } = useFetch(`${BASE_URL}/tour/:${id}`)
+  const { data: tour, error, loading } = useFetch(`${BASE_URL}/tour/:${id}`)
 
   const { photo, title, desc, price, reviews, address, city, distance, maxGroupSize } = tour
 
