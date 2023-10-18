@@ -7,7 +7,7 @@ import mongoose from 'mongoose'
 import tourRoute from './routes/tour.js'
 import userRoute from './routes/user.js'
 import authRoute from './routes/auth.js'
-import reviewRoute from './routes/reviews.js '
+import reviewRoute from './routes/reviews.js'
 import bookingRoute from './routes/booking.js'
 
 dotenv.config()

@@ -1,6 +1,6 @@
 import express from "express";
-import { createBooking, getAllBooking, getSingleBooking } from "../controllers/bookingController";
-import { verifyUser } from "../middleware/verifyToken";
+import { createBooking, getAllBooking, getSingleBooking } from "../controllers/bookingController.js";
+import { verifyUser } from "../middleware/verifyToken.js";
 
 const router = express.Router()
 
