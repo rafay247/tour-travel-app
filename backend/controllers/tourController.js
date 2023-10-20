@@ -1,7 +1,6 @@
 import Tour from '../models/Tour.js'
 
 export const createTour = async (req, res) => {
-
     const newTour = new Tour(req.body)
     try {
         const savedTour = await newTour.save()
@@ -83,7 +82,6 @@ export const getSingleTour = async (req, res) => {
 }
 export const getAllTour = async (req, res) => {
     try {
-
         const page = parseInt(req.query.page)
 
         const tours = await Tour.find({}).populate('reviews').skip(page * 8).limit(8)
@@ -152,6 +150,7 @@ export const getFeaturedTours = async (req, res) => {
 export const getTourCount = async (req, res) => {
     try {
         const tourCount = await Tour.estimatedDocumentCount()
+        
         res.status(200)
             .json({
                 success: true,

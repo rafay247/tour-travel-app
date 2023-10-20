@@ -1,7 +1,9 @@
 import jwt from 'jsonwebtoken'
 
-export const verifyToken = (req, res) => {
-    const token = req.cookie.accessToken
+export const verifyToken = (req, res, next) => {
+
+    // const token = req.cookie.accessToken
+    const token = req.header('access-token')
 
     if (!token) {
         return res.status(401).json({ success: false, message: "You're not authorize" })
@@ -16,7 +18,7 @@ export const verifyToken = (req, res) => {
         next()
     })
 }
-export const verifyUser = () => {
+export const verifyUser = (req, res, next) => {
     verifyToken(req, res, next, () => {
         if (req.user.id === req.params.id || req.user.role === 'admin') {
             next()
@@ -26,7 +28,7 @@ export const verifyUser = () => {
         }
     })
 }
-export const verifyAdmin = () => {
+export const verifyAdmin = (req, res, next) => {
     verifyToken(req, res, next, () => {
         if (req.user.role === 'admin') {
             next()
