@@ -5,7 +5,7 @@ import { verifyAdmin } from "../middleware/verifyToken.js";
 const router = express.Router()
 
 //create tour 
-router.post('/', verifyAdmin, createTour)
+router.post('/', createTour)
 
 //update tour 
 router.put('/:id', verifyAdmin, updateTour)
