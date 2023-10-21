@@ -2,8 +2,11 @@ import Tour from "../models/Tour.js"
 import Review from "../models/Review.js"
 
 export const createReview = async (req, res) => {
+
+    console.log(req.body);
     const tourId = req.params.tourId
     const newReview = new Review({ ...req.body })
+    
     try {
         const savedReview = await newReview.save()
         //update the reviews array in tour
@@ -22,7 +25,7 @@ export const createReview = async (req, res) => {
         res.status(500)
             .json({
                 success: false,
-                message: "Failed to submit",
+                message: error.message,
             })
 
     }

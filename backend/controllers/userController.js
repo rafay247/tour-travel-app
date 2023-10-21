@@ -63,6 +63,7 @@ export const deleteUser = async (req, res) => {
     }
 }
 export const getSingleUser = async (req, res) => {
+
     const id = req.params.id
     try {
         const user = await User.findById(id)

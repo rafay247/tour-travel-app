@@ -2,6 +2,7 @@ import Booking from "../models/Booking.js"
 
 export const createBooking = async (req, res) => {
 
+    console.log(req.body);
     try {
         const newBooking = new Booking(req.body)
         const savedBooking = await newBooking.save()
@@ -14,10 +15,11 @@ export const createBooking = async (req, res) => {
             })
 
     } catch (error) {
+        console.log(error);
         res.status(500)
             .json({
                 success: false,
-                message: "server error",
+                message: error.message,
             })
 
     }
