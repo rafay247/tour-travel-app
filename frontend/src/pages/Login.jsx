@@ -23,7 +23,7 @@ const Login = () => {
   const handleClick = async e => {
     e.preventDefault()
     dispatch({ type: 'LOGIN_START' })
-
+console.log(credentials);
     try {
       const res = await fetch(`${BASE_URL}/auth/login`, {
         method: 'post',
@@ -34,7 +34,7 @@ const Login = () => {
         body: JSON.stringify(credentials)
       })
       const result = await res.json()
-
+console.log('lognin',result);
       if (!res.ok) alert(result.message)
       dispatch({ type: 'LOGIN_SUCCESS', payload: result.data })
       navigate('/')

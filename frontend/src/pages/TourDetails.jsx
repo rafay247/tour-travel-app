@@ -16,7 +16,8 @@ const TourDetails = () => {
   const [tourRating, setTourRating] = useState(null)
   const { user } = useContext(AuthContextt)
 
-  const { data: tour, error, loading } = useFetch(`${BASE_URL}/tour/:${id}`)
+  const { data: tour, error, loading } = useFetch(`${BASE_URL}/tours/${id}`)
+  console.log('tour',tour);
 
   const { photo, title, desc, price, reviews, address, city, distance, maxGroupSize } = tour
 
@@ -82,7 +83,7 @@ const TourDetails = () => {
                       <i className='ri-star-s-fill' style={{
                         color: "var(--secondary-color)"
                       }}></i>{avgRating === 0 ? null : avgRating}
-                      {totalRating === 0 ? ('Not rated') : (<span> ({reviews.length})</span>)}
+                      {totalRating === 0 ? ('Not rated') : (<span> ({reviews?.length})</span>)}
                     </span>
                     <span>
                       <i className='ri-map-pin-user-fill'></i>{address}

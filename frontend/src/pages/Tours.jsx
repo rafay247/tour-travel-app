@@ -14,8 +14,8 @@ const Tours = () => {
 
   const [pageCount, SetPageCount] = useState(0)
   const [page, SetPage] = useState(0)
-  const { data: tours, loading, error } = useFetch(`${BASE_URL}tours?page=${page}`)
-  const { data: tourCount } = useFetch(`${BASE_URL}tours/search/getTourCount`)
+  const { data: tours, loading, error } = useFetch(`${BASE_URL}/tours?page=${page}`)
+  const { data: tourCount } = useFetch(`${BASE_URL}/tours/search/getTourCount`)
 
   useEffect(() => {
     const pages = Math.ceil(tourCount / 8)
@@ -51,7 +51,7 @@ const Tours = () => {
                 ))}
               <Col lg='12'>
                 <div className='pagination d-flex align-items-center justify-content-center mt-4 gap-3'>
-                  {[...Array(pageCount).keys()].map(number => (
+                  {[...Array(pageCount)?.keys()].map(number => (
                     <span
                       key={number}
                       onClick={() => SetPage(number)}
