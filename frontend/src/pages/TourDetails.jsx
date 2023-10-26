@@ -44,7 +44,7 @@ const TourDetails = () => {
         headers: {
           'content-type': 'application/json'
         },
-        credentials: 'include',
+        credentials: 'same-origin',
         body: JSON.stringify(reviewObj)
       })
       const result = await res.json()

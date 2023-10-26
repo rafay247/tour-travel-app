@@ -29,7 +29,7 @@ const Login = () => {
         headers: {
           'content-type': 'application/json',
         },
-        credentials: 'include',
+        credentials: 'same-origin',
         body: JSON.stringify(credentials)
       })
       const result = await res.json()

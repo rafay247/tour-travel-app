@@ -2,8 +2,8 @@ import jwt from 'jsonwebtoken'
 
 export const verifyToken = (req, res, next) => {
 
-    // const token = req.cookie.accessToken
-    const token = req.header('access-token')
+    const token = req.cookie.accessToken
+    // const token = req.header('access-token')
 
     if (!token) {
         return res.status(401).json({ success: false, message: "You're not authorize" })

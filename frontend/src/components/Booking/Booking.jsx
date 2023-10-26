@@ -39,7 +39,7 @@ const Booking = ({ tour, avgRating }) => {
                 headers: {
                     'content-type': 'application/json'
                 },
-                credentials: 'include',
+                credentials: 'same-origin',
                 body: JSON.stringify(booking)
             })
             const result = await res.json()

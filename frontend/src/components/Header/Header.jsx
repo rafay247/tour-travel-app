@@ -82,8 +82,8 @@ const Header = () => {
               <div className='nav_btns d-flex align-items-center gap-4'>
                 {
                   user ? <>
-                    <h5 className='mb-0'>{user.username}</h5>
-                    <Button className='btn btn-dark' onClick={logout}>Logout</Button>
+                    <h5 className='username text-capitalize'><i class="ri-user-line"></i>{user.username}</h5>
+                    <Button className='btn btn-warning' onClick={logout}>Logout</Button>
 
                   </> : <>
                     <Button className='btn secondary__btn'><Link to='/login'>Login</Link></Button>
